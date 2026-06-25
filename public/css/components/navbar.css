@@ -1,0 +1,287 @@
+/* ================================
+   Navbar Variables
+   Change these values to restyle the navbar.
+================================ */
+:root {
+  /* Layout */
+  --navbar-max-width: 1120px;
+  --navbar-side-padding: 2rem;
+  --navbar-min-height: 64px;
+  --navbar-gap: 1rem;
+  --navbar-breakpoint: 768px; /* Note: CSS custom media cannot use this directly in plain CSS */
+
+  /* Brand */
+  --navbar-brand-font-size: 1.25rem;
+  --navbar-brand-font-weight: 700;
+  --navbar-brand-letter-spacing: 0.01em;
+
+  /* Toggle button */
+  --navbar-toggle-size: 44px;
+  --navbar-toggle-border-width: 1px;
+  --navbar-toggle-border-color: #d1d5db;
+  --navbar-toggle-border-radius: 6px;
+  --navbar-toggle-bg: #ffffff;
+  --navbar-toggle-bg-hover: #f3f4f6;
+  --navbar-toggle-color: #111827;
+
+  /* Focus */
+  --navbar-focus-outline-width: 3px;
+  --navbar-focus-outline-color: #93c5fd;
+  --navbar-focus-outline-offset: 3px;
+
+  /* Hamburger icon */
+  --navbar-icon-width: 22px;
+  --navbar-icon-height: 2px;
+  --navbar-icon-gap: 7px;
+  --navbar-icon-radius: 999px;
+  --navbar-icon-transition: 160ms ease;
+
+  /* Mobile menu */
+  --navbar-menu-background-color: none;
+
+  /* Mobile menu */
+  --navbar-list-gap-mobile: 0.25rem;
+  --navbar-list-padding-mobile: 0.75rem 0;
+
+  /* Desktop menu */
+  --navbar-list-gap-desktop: 0.5rem;
+
+  /* Links */
+  --navbar-link-padding-mobile: 0.75rem 1rem;
+  --navbar-link-padding-desktop: 0.5rem 0.75rem;
+  --navbar-link-border-radius: 6px;
+  --navbar-link-font-weight: 500;
+  --navbar-link-bg-hover: #f3f4f6;
+
+  /* Transition Animation */
+  --navbar-menu-transition-duration: 180ms;
+  --navbar-menu-transition: var(--navbar-menu-transition-duration) ease;
+}
+
+/* ================================
+   Navbar Base
+   Main navbar container.
+   Uses flexbox to place the brand and menu/toggle apart.
+================================ */
+
+.navbar {
+  width: min(100% - var(--navbar-side-padding), var(--navbar-max-width));
+  margin-inline: auto;
+  min-height: var(--navbar-min-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--navbar-gap);
+
+  /* Allows the mobile dropdown to position itself relative to the navbar */
+  position: relative;
+}
+
+/* Keep link styling local to the navbar.
+   Avoid styling all links globally from a component file. */
+.navbar a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Keep button font consistent inside the navbar */
+.navbar button {
+  font: inherit;
+}
+
+/* ================================
+   Brand
+================================ */
+
+.navbar__brand {
+  font-size: var(--navbar-brand-font-size);
+  font-weight: var(--navbar-brand-font-weight);
+  letter-spacing: var(--navbar-brand-letter-spacing);
+}
+
+/* ================================
+   Mobile Toggle Button
+   Visible on small screens.
+   Hidden on desktop.
+================================ */
+
+.navbar__toggle {
+  width: var(--navbar-toggle-size);
+  height: var(--navbar-toggle-size);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: var(--navbar-toggle-border-width) solid
+    var(--navbar-toggle-border-color);
+  border-radius: var(--navbar-toggle-border-radius);
+
+  background: var(--navbar-toggle-bg);
+  color: var(--navbar-toggle-color);
+}
+
+.navbar__toggle:hover {
+  background: var(--navbar-toggle-bg-hover);
+}
+
+/* Accessible keyboard focus styles */
+.navbar__toggle:focus-visible,
+.navbar__link:focus-visible {
+  outline: var(--navbar-focus-outline-width) solid
+    var(--navbar-focus-outline-color);
+  outline-offset: var(--navbar-focus-outline-offset);
+}
+
+/* ================================
+   Hamburger Icon
+   The middle line is .navbar__icon.
+   The top and bottom lines are pseudo-elements.
+================================ */
+
+.navbar__icon,
+.navbar__icon::before,
+.navbar__icon::after {
+  width: var(--navbar-icon-width);
+  height: var(--navbar-icon-height);
+
+  display: block;
+  border-radius: var(--navbar-icon-radius);
+
+  background: currentColor;
+
+  transition:
+    transform var(--navbar-icon-transition),
+    opacity var(--navbar-icon-transition);
+}
+
+.navbar__icon {
+  position: relative;
+}
+
+.navbar__icon::before,
+.navbar__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.navbar__icon::before {
+  top: calc(var(--navbar-icon-gap) * -1);
+}
+
+.navbar__icon::after {
+  top: var(--navbar-icon-gap);
+}
+
+/* When the menu is open, turn the hamburger into an X */
+.navbar__toggle[aria-expanded="true"] .navbar__icon {
+  background: transparent;
+}
+
+.navbar__toggle[aria-expanded="true"] .navbar__icon::before {
+  transform: translateY(var(--navbar-icon-gap)) rotate(45deg);
+}
+
+.navbar__toggle[aria-expanded="true"] .navbar__icon::after {
+  transform: translateY(calc(var(--navbar-icon-gap) * -1)) rotate(-45deg);
+}
+
+/* ================================
+   Mobile Menu
+   Hidden by default.
+   JavaScript should set data-open="true" when open.
+================================ */
+
+.navbar__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--navbar-menu-background-color);
+  display: grid;
+  grid-template-rows: 0fr;
+
+  overflow: hidden;
+  visibility: hidden;
+
+  transition:
+    grid-template-rows var(--navbar-menu-transition, 180ms ease),
+    visibility 0s linear var(--navbar-menu-transition-duration, 180ms);
+}
+
+.navbar__menu[data-open="true"] {
+  grid-template-rows: 1fr;
+  visibility: visible;
+
+  transition:
+    grid-template-rows var(--navbar-menu-transition, 180ms ease),
+    visibility 0s;
+}
+
+/* ================================
+   Menu List
+   Stacked vertically on mobile.
+================================ */
+
+.navbar__list {
+  min-height: 0;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--navbar-list-gap-mobile);
+  padding: var(--navbar-list-padding-mobile);
+}
+
+/* ================================
+   Links
+================================ */
+
+.navbar__link {
+  display: block;
+  padding: var(--navbar-link-padding-mobile);
+  border-radius: var(--navbar-link-border-radius);
+  font-weight: var(--navbar-link-font-weight);
+}
+
+.navbar__link:hover {
+  background: var(--navbar-link-bg-hover);
+}
+
+/* ================================
+   Desktop Layout
+   At 768px and wider:
+   - hide the toggle button
+   - show the menu permanently
+   - display links horizontally
+================================ */
+
+@media (min-width: 768px) {
+  .navbar__toggle {
+    display: none;
+  }
+
+  .navbar__menu {
+    position: static;
+    display: block;
+    overflow: visible;
+    visibility: visible;
+    transition: none;
+  }
+
+  .navbar__list {
+    min-height: auto;
+    overflow: visible;
+
+    flex-direction: row;
+    align-items: center;
+    gap: var(--navbar-list-gap-desktop);
+    padding: 0;
+  }
+
+  .navbar__link {
+    padding: var(--navbar-link-padding-desktop);
+  }
+}

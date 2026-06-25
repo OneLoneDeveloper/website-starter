@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reset CSS Test Page</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="base.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Reset CSS Test Page</h1>
+      <p>
+        Use this page to check typography, spacing, forms, tables, media,
+        buttons, and default browser styles after applying your reset.
+      </p>
+      <nav aria-label="Page sections">
+        <a href="#text">Text</a>
+        <a href="#lists">Lists</a>
+        <a href="#forms">Forms</a>
+        <a href="#tables">Tables</a>
+        <a href="#media">Media</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="text">
+        <h2>Text Elements</h2>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+        <p>
+          This is a paragraph with <strong>strong text</strong>,
+          <em>emphasized text</em>, <a href="#">a link</a>,
+          <code>inline code</code>, <mark>marked text</mark>,
+          <small>small text</small>, and
+          <abbr title="Cascading Style Sheets">CSS</abbr>.
+        </p>
+        <blockquote>
+          This is a blockquote. Resets often affect its margins, font style, and
+          indentation.
+        </blockquote>
+        <pre><code>body {
+  margin: 0;
+  box-sizing: border-box;
+}</code></pre>
+        <hr />
+      </section>
+
+      <section id="lists">
+        <h2>Lists</h2>
+        <ul>
+          <li>Unordered item one</li>
+          <li>
+            Unordered item two
+            <ul>
+              <li>Nested unordered item</li>
+            </ul>
+          </li>
+        </ul>
+        <ol>
+          <li>Ordered item one</li>
+          <li>
+            Ordered item two
+            <ol>
+              <li>Nested ordered item</li>
+            </ol>
+          </li>
+        </ol>
+        <dl>
+          <dt>Definition term</dt>
+          <dd>Definition description text.</dd>
+        </dl>
+      </section>
+
+      <section id="forms">
+        <h2>Forms</h2>
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Basic Inputs</legend>
+
+            <p>
+              <label for="name">Text input</label>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" />
+            </p>
+
+            <p>
+              <label for="email">Email input</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="jane@example.com"
+              />
+            </p>
+
+            <p>
+              <label for="password">Password input</label>
+              <input id="password" name="password" type="password" />
+            </p>
+
+            <p>
+              <label for="message">Textarea</label>
+              <textarea id="message" name="message" rows="4">
+Textarea default text</textarea
+              >
+            </p>
+
+            <p>
+              <label for="select">Select menu</label>
+              <select id="select" name="select">
+                <option>First option</option>
+                <option>Second option</option>
+                <option>Third option</option>
+              </select>
+            </p>
+
+            <p>
+              <label>
+                <input type="checkbox" name="checkbox" />
+                Checkbox option
+              </label>
+            </p>
+
+            <p>
+              <label>
+                <input type="radio" name="radio" value="one" />
+                Radio option one
+              </label>
+              <label>
+                <input type="radio" name="radio" value="two" />
+                Radio option two
+              </label>
+            </p>
+
+            <p>
+              <label for="range">Range input</label>
+              <input id="range" name="range" type="range" />
+            </p>
+
+            <p>
+              <button type="submit">Submit Button</button>
+              <button type="button">Regular Button</button>
+              <input type="button" value="Input Button" />
+            </p>
+          </fieldset>
+        </form>
+      </section>
+
+      <section id="tables">
+        <h2>Table</h2>
+        <table>
+          <caption>
+            Sample Table Caption
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Type</th>
+              <th scope="col">Default Style</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Heading</td>
+              <td>Typography</td>
+              <td>Bold, margin, size</td>
+            </tr>
+            <tr>
+              <td>Button</td>
+              <td>Form control</td>
+              <td>Border, background, padding</td>
+            </tr>
+            <tr>
+              <td>List</td>
+              <td>Content</td>
+              <td>Bullets, indentation, margin</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="media">
+        <h2>Media and Layout</h2>
+        <div class="media-row">
+          <div class="fake-image" role="img" aria-label="Placeholder image">
+            Image Area
+          </div>
+          <figure>
+            <div
+              class="fake-image"
+              role="img"
+              aria-label="Placeholder figure image"
+            >
+              Figure
+            </div>
+            <figcaption>Figure caption text.</figcaption>
+          </figure>
+        </div>
+
+        <h3>Box Model Check</h3>
+        <div class="box">Width, height, padding, and border test.</div>
+      </section>
+
+      <section>
+        <h2>Semantic Elements</h2>
+        <article>
+          <h3>Article Title</h3>
+          <p>
+            This article sits inside a section and contains regular paragraph
+            text.
+          </p>
+        </article>
+        <aside>
+          <p>This is aside content.</p>
+        </aside>
+        <details>
+          <summary>Details summary</summary>
+          <p>Hidden details content appears here.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Reset CSS Test</p>
+    </footer>
+  </body>
+</html>

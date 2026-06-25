@@ -1,0 +1,17 @@
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}

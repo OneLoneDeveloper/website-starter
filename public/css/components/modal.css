@@ -1,0 +1,157 @@
+/* ================================
+   Modal Variables
+================================ */
+
+:root {
+  /* Backdrop */
+  --modal-backdrop-bg: rgb(0 0 0 / 0.5);
+
+  /* Panel */
+  --modal-panel-bg: #ffffff;
+  --modal-panel-color: #111827;
+  --modal-panel-width: min(100% - 2rem, 520px);
+  --modal-panel-border-radius: 0.75rem;
+  --modal-panel-padding: 1.25rem;
+  --modal-panel-shadow: 0 20px 50px rgb(0 0 0 / 0.25);
+
+  /* Layout */
+  --modal-gap: 1rem;
+  --modal-footer-gap: 0.75rem;
+
+  /* Close button */
+  --modal-close-size: 2.25rem;
+  --modal-close-bg: transparent;
+  --modal-close-bg-hover: #f3f4f6;
+  --modal-close-color: inherit;
+  --modal-close-border-radius: 0.375rem;
+
+  /* Animation */
+  --modal-animation-duration: 160ms;
+  --modal-animation-ease: ease;
+
+  /* Focus */
+  --modal-focus-outline-width: 3px;
+  --modal-focus-outline-color: #93c5fd;
+  --modal-focus-outline-offset: 3px;
+}
+
+/* ================================
+   Modal Base
+================================ */
+
+.modal {
+  width: var(--modal-panel-width);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--modal-panel-color);
+}
+
+/* Native dialog backdrop */
+.modal::backdrop {
+  background: var(--modal-backdrop-bg);
+}
+
+/* Remove default dialog margins and center manually */
+.modal[open] {
+  display: grid;
+  place-items: center;
+}
+
+/* ================================
+   Modal Panel
+================================ */
+
+.modal__panel {
+  width: 100%;
+  padding: var(--modal-panel-padding);
+  border-radius: var(--modal-panel-border-radius);
+  background: var(--modal-panel-bg);
+  box-shadow: var(--modal-panel-shadow);
+
+  display: grid;
+  gap: var(--modal-gap);
+
+  animation: modal-enter var(--modal-animation-duration) var(--modal-animation-ease);
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================================
+   Modal Header
+================================ */
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--modal-gap);
+}
+
+.modal__title {
+  margin: 0;
+}
+
+/* ================================
+   Close Button
+================================ */
+
+.modal__close {
+  width: var(--modal-close-size);
+  height: var(--modal-close-size);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: var(--modal-close-border-radius);
+
+  background: var(--modal-close-bg);
+  color: var(--modal-close-color);
+
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  background: var(--modal-close-bg-hover);
+}
+
+/* ================================
+   Modal Body
+================================ */
+
+.modal__body {
+  max-height: 60vh;
+  overflow: auto;
+}
+
+/* ================================
+   Modal Footer
+================================ */
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--modal-footer-gap);
+}
+
+/* ================================
+   Focus Styles
+================================ */
+
+.modal button:focus-visible,
+[data-modal-open]:focus-visible {
+  outline: var(--modal-focus-outline-width) solid var(--modal-focus-outline-color);
+  outline-offset: var(--modal-focus-outline-offset);
+}
