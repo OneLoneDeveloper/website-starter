@@ -39,137 +39,139 @@
       </nav>
     </header>
 
-    <!-- Modal -->
-    <button type="button" data-modal-open="example-modal">Open Modal</button>
+    <main>
+      <!-- Modal -->
+      <button type="button" data-modal-open="example-modal">Open Modal</button>
 
-    <dialog
-      class="modal"
-      id="example-modal"
-      aria-labelledby="example-modal-title"
-    >
-      <div class="modal__panel">
-        <header class="modal__header">
-          <h2 class="modal__title" id="example-modal-title">Modal Title</h2>
+      <dialog
+        class="modal"
+        id="example-modal"
+        aria-labelledby="example-modal-title"
+      >
+        <div class="modal__panel">
+          <header class="modal__header">
+            <h2 class="modal__title" id="example-modal-title">Modal Title</h2>
 
-          <button
-            class="modal__close"
-            type="button"
-            data-modal-close
-            aria-label="Close modal"
+            <button
+              class="modal__close"
+              type="button"
+              data-modal-close
+              aria-label="Close modal"
+            >
+              &times;
+            </button>
+          </header>
+
+          <div class="modal__body">
+            <p>
+              This is the modal content. You can put forms, text, images, or
+              anything else here.
+            </p>
+          </div>
+
+          <footer class="modal__footer">
+            <button type="button" data-modal-close>Cancel</button>
+            <button type="button">Confirm</button>
+          </footer>
+        </div>
+      </dialog>
+
+      <!-- Accordion -->
+      <div class="accordion" data-accordion>
+        <div class="accordion__item">
+          <h3 class="accordion__heading">
+            <button
+              class="accordion__button"
+              type="button"
+              id="accordion-trigger-1"
+              aria-expanded="true"
+              aria-controls="accordion-panel-1"
+              data-accordion-trigger
+            >
+              <span>Accordion Item #1</span>
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+
+          <div
+            class="accordion__panel"
+            id="accordion-panel-1"
+            role="region"
+            aria-labelledby="accordion-trigger-1"
+            aria-hidden="false"
+            data-open="true"
           >
-            &times;
-          </button>
-        </header>
-
-        <div class="modal__body">
-          <p>
-            This is the modal content. You can put forms, text, images, or
-            anything else here.
-          </p>
+            <div class="accordion__panel-inner">
+              <div class="accordion__content">
+                <p>This is the first accordion panel. It starts open.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <footer class="modal__footer">
-          <button type="button" data-modal-close>Cancel</button>
-          <button type="button">Confirm</button>
-        </footer>
-      </div>
-    </dialog>
+        <div class="accordion__item">
+          <h3 class="accordion__heading">
+            <button
+              class="accordion__button"
+              type="button"
+              id="accordion-trigger-2"
+              aria-expanded="false"
+              aria-controls="accordion-panel-2"
+              data-accordion-trigger
+            >
+              <span>Accordion Item #2</span>
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
 
-    <!-- Accordion -->
-    <div class="accordion" data-accordion>
-      <div class="accordion__item">
-        <h3 class="accordion__heading">
-          <button
-            class="accordion__button"
-            type="button"
-            id="accordion-trigger-1"
-            aria-expanded="true"
-            aria-controls="accordion-panel-1"
-            data-accordion-trigger
+          <div
+            class="accordion__panel"
+            id="accordion-panel-2"
+            role="region"
+            aria-labelledby="accordion-trigger-2"
+            aria-hidden="true"
+            inert
           >
-            <span>Accordion Item #1</span>
-            <span class="accordion__icon" aria-hidden="true"></span>
-          </button>
-        </h3>
+            <div class="accordion__panel-inner">
+              <div class="accordion__content">
+                <p>This is the second accordion panel. It starts closed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <div
-          class="accordion__panel"
-          id="accordion-panel-1"
-          role="region"
-          aria-labelledby="accordion-trigger-1"
-          aria-hidden="false"
-          data-open="true"
-        >
-          <div class="accordion__panel-inner">
-            <div class="accordion__content">
-              <p>This is the first accordion panel. It starts open.</p>
+        <div class="accordion__item">
+          <h3 class="accordion__heading">
+            <button
+              class="accordion__button"
+              type="button"
+              id="accordion-trigger-3"
+              aria-expanded="false"
+              aria-controls="accordion-panel-3"
+              data-accordion-trigger
+            >
+              <span>Accordion Item #3</span>
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+
+          <div
+            class="accordion__panel"
+            id="accordion-panel-3"
+            role="region"
+            aria-labelledby="accordion-trigger-3"
+            aria-hidden="true"
+            inert
+          >
+            <div class="accordion__panel-inner">
+              <div class="accordion__content">
+                <p>This is the third accordion panel. It starts closed.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="accordion__item">
-        <h3 class="accordion__heading">
-          <button
-            class="accordion__button"
-            type="button"
-            id="accordion-trigger-2"
-            aria-expanded="false"
-            aria-controls="accordion-panel-2"
-            data-accordion-trigger
-          >
-            <span>Accordion Item #2</span>
-            <span class="accordion__icon" aria-hidden="true"></span>
-          </button>
-        </h3>
-
-        <div
-          class="accordion__panel"
-          id="accordion-panel-2"
-          role="region"
-          aria-labelledby="accordion-trigger-2"
-          aria-hidden="true"
-          inert
-        >
-          <div class="accordion__panel-inner">
-            <div class="accordion__content">
-              <p>This is the second accordion panel. It starts closed.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion__item">
-        <h3 class="accordion__heading">
-          <button
-            class="accordion__button"
-            type="button"
-            id="accordion-trigger-3"
-            aria-expanded="false"
-            aria-controls="accordion-panel-3"
-            data-accordion-trigger
-          >
-            <span>Accordion Item #3</span>
-            <span class="accordion__icon" aria-hidden="true"></span>
-          </button>
-        </h3>
-
-        <div
-          class="accordion__panel"
-          id="accordion-panel-3"
-          role="region"
-          aria-labelledby="accordion-trigger-3"
-          aria-hidden="true"
-          inert
-        >
-          <div class="accordion__panel-inner">
-            <div class="accordion__content">
-              <p>This is the third accordion panel. It starts closed.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </main>
 
     <script src="public/js/components/navbar.js"></script>
     <script src="public/js/components/modal.js"></script>

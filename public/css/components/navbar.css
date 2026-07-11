@@ -37,7 +37,7 @@
   --navbar-icon-transition: 160ms ease;
 
   /* Mobile menu */
-  --navbar-menu-background-color: none;
+  --navbar-menu-background-color: #ffffff;
 
   /* Mobile menu */
   --navbar-list-gap-mobile: 0.25rem;
@@ -120,6 +120,10 @@
 
   background: var(--navbar-toggle-bg);
   color: var(--navbar-toggle-color);
+
+  padding: 0;
+  flex: 0 0 var(--navbar-toggle-size);
+  line-height: 1;
 }
 
 .navbar__toggle:hover {
