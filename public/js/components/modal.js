@@ -49,9 +49,9 @@ function openModal(modal) {
   if (!(modal instanceof HTMLDialogElement)) return;
   if (modal.open) return;
 
-  modal.showModal();
+  document.documentElement.classList.add("modal-is-open");
 
-  document.body.style.overflow = "hidden";
+  modal.showModal();
 }
 
 function closeModal(modal) {
@@ -60,15 +60,15 @@ function closeModal(modal) {
 
   modal.close();
 
-  document.body.style.overflow = "";
+  document.documentElement.classList.remove("modal-is-open");
 }
 
-/*
-  When the user presses Escape, <dialog> closes automatically.
-  This keeps body scrolling restored afterward.
-*/
-document.addEventListener("close", (event) => {
-  if (!event.target.matches("dialog.modal")) return;
+document.addEventListener(
+  "close",
+  (event) => {
+    if (!event.target.matches("dialog.modal")) return;
 
-  document.body.style.overflow = "";
-}, true);
+    document.documentElement.classList.remove("modal-is-open");
+  },
+  true
+);

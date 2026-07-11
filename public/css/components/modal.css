@@ -155,3 +155,18 @@
   outline: var(--modal-focus-outline-width) solid var(--modal-focus-outline-color);
   outline-offset: var(--modal-focus-outline-offset);
 }
+
+html.modal-is-open,
+html.modal-is-open body {
+  overflow: hidden;
+}
+
+/* Optional: prevents layout shifting when the scrollbar disappears */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Prevent the native dialog itself from flashing a scrollbar */
+.modal {
+  overflow: visible;
+}
