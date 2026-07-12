@@ -1,0 +1,20 @@
+/* =========================================
+   main.css
+
+   Main stylesheet entry point.
+   Every HTML page should link only this file.
+========================================= */
+
+/* 1. Remove browser defaults */
+@import "reset.css";
+
+/* 2. Shared design tokens */
+@import "tokens.css";
+
+/* 3. Site-wide base styles */
+@import "base.css";
+
+/* 4. Components */
+@import "components/navbar.css";
+@import "components/modal.css";
+@import "components/accordion.css";

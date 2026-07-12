@@ -1,47 +1,50 @@
-/* ================================
+/* =========================================
    Accordion Variables
-   Change these values to restyle the accordion.
-================================ */
 
-:root {
+   These are scoped to .accordion.
+   They use shared tokens from tokens.css.
+========================================= */
+
+.accordion {
   /* Container */
-  --accordion-border-width: 1px;
-  --accordion-border-color: #d1d5db;
-  --accordion-border-radius: 0.5rem;
-  --accordion-bg: #ffffff;
-  --accordion-color: #111827;
+  --accordion-border-width: var(--border-width);
+  --accordion-border-color: var(--color-border-strong);
+  --accordion-border-radius: var(--radius-md);
+  --accordion-bg: var(--color-surface);
+  --accordion-color: var(--color-text);
 
   /* Items */
-  --accordion-item-border-color: #d1d5db;
+  --accordion-item-border-color: var(--color-border-strong);
 
   /* Buttons */
-  --accordion-button-padding: 1rem;
-  --accordion-button-bg: #ffffff;
-  --accordion-button-bg-hover: #f3f4f6;
-  --accordion-button-bg-open: #eff6ff;
+  --accordion-button-padding: var(--space-md);
+  --accordion-button-bg: var(--color-surface);
+  --accordion-button-bg-hover: var(--color-surface-muted);
+  --accordion-button-bg-open: var(--color-primary-soft);
   --accordion-button-color: inherit;
   --accordion-button-font-weight: 600;
-  --accordion-button-gap: 1rem;
+  --accordion-button-gap: var(--space-md);
 
   /* Content */
-  --accordion-content-padding: 1rem;
-  --accordion-content-bg: #ffffff;
+  --accordion-content-padding: var(--space-md);
+  --accordion-content-bg: var(--color-surface);
   --accordion-content-color: inherit;
 
   /* Icon */
   --accordion-icon-size: 1rem;
   --accordion-icon-line-size: 2px;
-  --accordion-icon-radius: 999px;
+  --accordion-icon-radius: var(--radius-pill);
 
   /* Animation */
-  --accordion-transition-duration: 180ms;
+  --accordion-transition-duration: var(--transition-normal-duration);
   --accordion-transition-ease: ease;
-  --accordion-transition: var(--accordion-transition-duration) var(--accordion-transition-ease);
+  --accordion-transition:
+    var(--accordion-transition-duration) var(--accordion-transition-ease);
 
   /* Focus */
-  --accordion-focus-outline-width: 3px;
-  --accordion-focus-outline-color: #93c5fd;
-  --accordion-focus-outline-offset: 3px;
+  --accordion-focus-outline-width: var(--focus-outline-width);
+  --accordion-focus-outline-color: var(--focus-outline-color);
+  --accordion-focus-outline-offset: var(--focus-outline-offset);
 }
 
 /* ================================

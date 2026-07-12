@@ -1,60 +1,62 @@
-/* ================================
+/* =========================================
    Navbar Variables
-   Change these values to restyle the navbar.
-================================ */
-:root {
+
+   These are scoped to .navbar.
+   They use shared tokens from tokens.css.
+========================================= */
+
+.navbar {
   /* Layout */
-  --navbar-max-width: 1120px;
-  --navbar-side-padding: 2rem;
-  --navbar-min-height: 64px;
-  --navbar-gap: 1rem;
-  --navbar-breakpoint: 768px; /* Note: CSS custom media cannot use this directly in plain CSS */
+  --navbar-max-width: var(--container-width);
+  --navbar-side-padding: var(--page-padding-inline);
+  --navbar-min-height: 4rem;
+  --navbar-gap: var(--space-md);
 
   /* Brand */
-  --navbar-brand-font-size: 1.25rem;
+  --navbar-brand-font-size: var(--font-size-lg);
   --navbar-brand-font-weight: 700;
   --navbar-brand-letter-spacing: 0.01em;
 
   /* Toggle button */
   --navbar-toggle-size: 44px;
-  --navbar-toggle-border-width: 1px;
-  --navbar-toggle-border-color: #d1d5db;
-  --navbar-toggle-border-radius: 6px;
-  --navbar-toggle-bg: #ffffff;
-  --navbar-toggle-bg-hover: #f3f4f6;
-  --navbar-toggle-color: #111827;
+  --navbar-toggle-border-width: var(--border-width);
+  --navbar-toggle-border-color: var(--color-border-strong);
+  --navbar-toggle-border-radius: var(--radius-sm);
+  --navbar-toggle-bg: var(--color-surface);
+  --navbar-toggle-bg-hover: var(--color-surface-muted);
+  --navbar-toggle-color: var(--color-heading);
 
   /* Focus */
-  --navbar-focus-outline-width: 3px;
-  --navbar-focus-outline-color: #93c5fd;
-  --navbar-focus-outline-offset: 3px;
+  --navbar-focus-outline-width: var(--focus-outline-width);
+  --navbar-focus-outline-color: var(--focus-outline-color);
+  --navbar-focus-outline-offset: var(--focus-outline-offset);
 
   /* Hamburger icon */
   --navbar-icon-width: 22px;
   --navbar-icon-height: 2px;
   --navbar-icon-gap: 7px;
-  --navbar-icon-radius: 999px;
-  --navbar-icon-transition: 160ms ease;
+  --navbar-icon-radius: var(--radius-pill);
+  --navbar-icon-transition: var(--transition-fast);
 
   /* Mobile menu */
-  --navbar-menu-background-color: #ffffff;
+  --navbar-menu-bg: var(--color-page-bg);
 
-  /* Mobile menu */
-  --navbar-list-gap-mobile: 0.25rem;
-  --navbar-list-padding-mobile: 0.75rem 0;
+  /* Mobile list */
+  --navbar-list-gap-mobile: var(--space-2xs);
+  --navbar-list-padding-mobile: var(--space-sm) 0;
 
-  /* Desktop menu */
-  --navbar-list-gap-desktop: 0.5rem;
+  /* Desktop list */
+  --navbar-list-gap-desktop: var(--space-xs);
 
   /* Links */
-  --navbar-link-padding-mobile: 0.75rem 1rem;
-  --navbar-link-padding-desktop: 0.5rem 0.75rem;
-  --navbar-link-border-radius: 6px;
+  --navbar-link-padding-mobile: var(--space-sm) var(--space-md);
+  --navbar-link-padding-desktop: var(--space-xs) var(--space-sm);
+  --navbar-link-border-radius: var(--radius-sm);
   --navbar-link-font-weight: 500;
-  --navbar-link-bg-hover: #f3f4f6;
+  --navbar-link-bg-hover: var(--color-surface-muted);
 
-  /* Transition Animation */
-  --navbar-menu-transition-duration: 180ms;
+  /* Animation */
+  --navbar-menu-transition-duration: var(--transition-normal-duration);
   --navbar-menu-transition: var(--navbar-menu-transition-duration) ease;
 }
 
@@ -80,13 +82,14 @@
 
 /* Keep link styling local to the navbar.
    Avoid styling all links globally from a component file. */
-.navbar a {
+.navbar__brand,
+.navbar__link {
   color: inherit;
   text-decoration: none;
 }
 
 /* Keep button font consistent inside the navbar */
-.navbar button {
+.navbar__toggle {
   font: inherit;
 }
 
@@ -109,6 +112,9 @@
 .navbar__toggle {
   width: var(--navbar-toggle-size);
   height: var(--navbar-toggle-size);
+  padding: 0;
+
+  flex: 0 0 var(--navbar-toggle-size);
 
   display: inline-flex;
   align-items: center;
@@ -121,8 +127,6 @@
   background: var(--navbar-toggle-bg);
   color: var(--navbar-toggle-color);
 
-  padding: 0;
-  flex: 0 0 var(--navbar-toggle-size);
   line-height: 1;
 }
 
@@ -203,7 +207,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: var(--navbar-menu-background-color);
+  background-color: var(--navbar-menu-bg);
   display: grid;
   grid-template-rows: 0fr;
 

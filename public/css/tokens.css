@@ -1,0 +1,146 @@
+/* =========================================
+   tokens.css
+
+   Central design tokens for the whole website.
+
+   Change this file when you want to change:
+   - colors
+   - typography
+   - spacing
+   - borders
+   - radius
+   - shadows
+   - motion
+========================================= */
+
+:root {
+  /* =========================================
+     Colors
+  ========================================= */
+
+  --color-page-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f3f4f6;
+  --color-surface-active: #eff6ff;
+
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-heading: #111827;
+
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+
+  --color-link: #2563eb;
+  --color-link-hover: #1d4ed8;
+
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-soft: #eff6ff;
+
+  --color-focus: #93c5fd;
+
+  --color-selection-bg: #dbeafe;
+  --color-selection-text: #111827;
+
+  --color-backdrop: rgb(0 0 0 / 0.5);
+
+  /* =========================================
+     Typography
+  ========================================= */
+
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --font-mono:
+    "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --font-size-small: 0.95rem;
+  --font-size-base: 1.125rem; /* 18px */
+  --font-size-lg: 1.25rem;
+
+  --line-height-base: 1.7;
+  --line-height-heading: 1.15;
+
+  /* =========================================
+     Layout
+  ========================================= */
+
+  --container-width: 72rem;
+  --page-padding-inline: 1.25rem;
+  --page-padding-block: 3rem;
+
+  /* =========================================
+     Spacing
+  ========================================= */
+
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Vertical rhythm */
+  --flow-space: var(--space-md);
+  --flow-space-tight: var(--space-sm);
+  --flow-space-loose: var(--space-xl);
+  --section-space: var(--space-3xl);
+
+  /* =========================================
+     Borders / Radius
+  ========================================= */
+
+  --border-width: 1px;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+
+  /* =========================================
+     Shadows
+  ========================================= */
+
+  --shadow-soft: 0 10px 30px rgb(15 23 42 / 0.06);
+  --shadow-modal: 0 20px 50px rgb(0 0 0 / 0.25);
+
+  /* =========================================
+     Focus
+  ========================================= */
+
+  --focus-outline-width: 3px;
+  --focus-outline-color: var(--color-focus);
+  --focus-outline-offset: 3px;
+
+  /* =========================================
+     Motion
+  ========================================= */
+
+  --transition-fast-duration: 160ms;
+  --transition-normal-duration: 180ms;
+
+  --transition-fast: var(--transition-fast-duration) ease;
+  --transition-normal: var(--transition-normal-duration) ease;
+
+  /* =========================================
+     Forms
+  ========================================= */
+
+  --input-bg: var(--color-surface);
+  --input-border: var(--color-border-strong);
+  --input-border-focus: #60a5fa;
+  --input-padding-block: 0.65rem;
+  --input-padding-inline: 0.85rem;
+
+  /* =========================================
+     Buttons
+  ========================================= */
+
+  --button-bg: var(--color-heading);
+  --button-bg-hover: #374151;
+  --button-text: #ffffff;
+  --button-padding-block: 0.7rem;
+  --button-padding-inline: 1rem;
+}
