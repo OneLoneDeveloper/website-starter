@@ -1,0 +1,28 @@
+{
+  "name": "node-client-starter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "homepage": "https://github.com/OneLoneDeveloper/node-client-starter#readme",
+  "bugs": {
+    "url": "https://github.com/OneLoneDeveloper/node-client-starter/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OneLoneDeveloper/node-client-starter.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node --watch --env-file=.env server.js",
+    "start": "node server.js",
+    "test": "node --test",
+    "test:watch": "node --test --watch"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1"
+  }
+}
