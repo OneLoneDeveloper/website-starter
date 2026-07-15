@@ -1,0 +1,28 @@
+<!-- THIS BUTTON OPENS THE MODAL, ADD IT TO YOUR HTML -->
+<!-- <button type="button" data-modal-open="example-modal">Open Modal</button> -->
+
+<dialog class="modal" id="<%= id %>" aria-labelledby="<%= id %>-title">
+  <div class="modal__panel">
+    <header class="modal__header">
+      <h2 class="modal__title" id="<%= id %>-title"><%= modalTitle %></h2>
+
+      <button
+        class="modal__close"
+        type="button"
+        data-modal-close
+        aria-label="Close modal"
+      >
+        &times;
+      </button>
+    </header>
+    
+    <div class="modal__body">
+      <p><%= modalText %></p>
+    </div>
+
+    <footer class="modal__footer">
+      <button type="button" data-modal-close>Cancel</button>
+      <button type="button">Confirm</button>
+    </footer>
+  </div>
+</dialog>
