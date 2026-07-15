@@ -1,7 +1,10 @@
-<dialog class="modal" id="<%= id %>" aria-labelledby="<%= id %>-title">
+<!-- Modal -->
+<button type="button" data-modal-open="example-modal">Open Modal</button>
+
+<dialog class="modal" id="example-modal" aria-labelledby="example-modal-title">
   <div class="modal__panel">
     <header class="modal__header">
-      <h2 class="modal__title" id="<%= id %>-title"><%= modalTitle %></h2>
+      <h2 class="modal__title" id="example-modal-title">Modal Title</h2>
 
       <button
         class="modal__close"
@@ -12,9 +15,12 @@
         &times;
       </button>
     </header>
-    
+
     <div class="modal__body">
-      <p><%= modalText %></p>
+      <p>
+        This is the modal content. You can put forms, text, images, or anything
+        else here.
+      </p>
     </div>
 
     <footer class="modal__footer">
