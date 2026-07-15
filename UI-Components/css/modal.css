@@ -1,0 +1,170 @@
+/* =========================================
+   Modal Variables
+
+   These are scoped to .modal.
+   They use shared tokens from tokens.css.
+========================================= */
+
+.modal {
+  /* Backdrop */
+  --modal-backdrop-bg: var(--color-backdrop);
+
+  /* Panel */
+  --modal-panel-bg: var(--color-surface);
+  --modal-panel-color: var(--color-text);
+  --modal-panel-width: min(100% - calc(var(--space-md) * 2), 520px);
+  --modal-panel-border-radius: var(--radius-lg);
+  --modal-panel-padding: var(--space-lg);
+  --modal-panel-shadow: var(--shadow-modal);
+
+  /* Layout */
+  --modal-gap: var(--space-md);
+  --modal-footer-gap: var(--space-sm);
+
+  /* Close button */
+  --modal-close-size: 2.25rem;
+  --modal-close-bg: transparent;
+  --modal-close-bg-hover: var(--color-surface-muted);
+  --modal-close-color: inherit;
+  --modal-close-border-radius: var(--radius-sm);
+
+  /* Animation */
+  --modal-animation-duration: var(--transition-fast-duration);
+  --modal-animation-ease: ease;
+}
+
+/* ================================
+   Modal Base
+================================ */
+
+.modal {
+  width: var(--modal-panel-width);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--modal-panel-color);
+}
+
+/* Native dialog backdrop */
+.modal::backdrop {
+  background: var(--modal-backdrop-bg);
+}
+
+/* Remove default dialog margins and center manually */
+.modal[open] {
+  display: grid;
+  place-items: center;
+}
+
+/* ================================
+   Modal Panel
+================================ */
+
+.modal__panel {
+  width: 100%;
+  padding: var(--modal-panel-padding);
+  border-radius: var(--modal-panel-border-radius);
+  background: var(--modal-panel-bg);
+  box-shadow: var(--modal-panel-shadow);
+
+  display: grid;
+  gap: var(--modal-gap);
+
+  animation: modal-enter var(--modal-animation-duration) var(--modal-animation-ease);
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================================
+   Modal Header
+================================ */
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--modal-gap);
+}
+
+.modal__title {
+  margin: 0;
+}
+
+/* ================================
+   Close Button
+================================ */
+
+.modal__close {
+  width: var(--modal-close-size);
+  height: var(--modal-close-size);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: var(--modal-close-border-radius);
+
+  background: var(--modal-close-bg);
+  color: var(--modal-close-color);
+
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  background: var(--modal-close-bg-hover);
+}
+
+/* ================================
+   Modal Body
+================================ */
+
+.modal__body {
+  max-height: 60vh;
+  overflow: auto;
+}
+
+/* ================================
+   Modal Footer
+================================ */
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--modal-footer-gap);
+}
+
+/* ================================
+   Focus Styles
+================================ */
+
+.modal button:focus-visible,
+[data-modal-open]:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+html.modal-is-open,
+html.modal-is-open body {
+  overflow: hidden;
+}
+
+/* Optional: prevents layout shifting when the scrollbar disappears */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Prevent the native dialog itself from flashing a scrollbar */
+.modal {
+  overflow: visible;
+}

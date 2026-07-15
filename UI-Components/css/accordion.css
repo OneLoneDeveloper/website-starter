@@ -1,0 +1,197 @@
+/* =========================================
+   Accordion Variables
+
+   These are scoped to .accordion.
+   They use shared tokens from tokens.css.
+========================================= */
+
+.accordion {
+  /* Container */
+  --accordion-border-width: var(--border-width);
+  --accordion-border-color: var(--color-border-strong);
+  --accordion-border-radius: var(--radius-md);
+  --accordion-bg: var(--color-surface);
+  --accordion-color: var(--color-text);
+
+  /* Items */
+  --accordion-item-border-color: var(--color-border-strong);
+
+  /* Buttons */
+  --accordion-button-padding: var(--space-md);
+  --accordion-button-bg: var(--color-surface);
+  --accordion-button-bg-hover: var(--color-surface-muted);
+  --accordion-button-bg-open: var(--color-primary-soft);
+  --accordion-button-color: inherit;
+  --accordion-button-font-weight: 600;
+  --accordion-button-gap: var(--space-md);
+
+  /* Content */
+  --accordion-content-padding: var(--space-md);
+  --accordion-content-bg: var(--color-surface);
+  --accordion-content-color: inherit;
+
+  /* Icon */
+  --accordion-icon-size: 1rem;
+  --accordion-icon-line-size: 2px;
+  --accordion-icon-radius: var(--radius-pill);
+
+  /* Animation */
+  --accordion-transition-duration: var(--transition-normal-duration);
+  --accordion-transition-ease: ease;
+  --accordion-transition:
+    var(--accordion-transition-duration) var(--accordion-transition-ease);
+
+  /* Focus */
+  --accordion-focus-outline-width: var(--focus-outline-width);
+  --accordion-focus-outline-color: var(--focus-outline-color);
+  --accordion-focus-outline-offset: var(--focus-outline-offset);
+}
+
+/* ================================
+   Accordion Base
+================================ */
+
+.accordion {
+  border: var(--accordion-border-width) solid var(--accordion-border-color);
+  border-radius: var(--accordion-border-radius);
+  background: var(--accordion-bg);
+  color: var(--accordion-color);
+
+  /* Keeps child borders/backgrounds inside rounded corners */
+  overflow: hidden;
+}
+
+/* Adds a divider between accordion items */
+.accordion__item + .accordion__item {
+  border-top: var(--accordion-border-width) solid var(--accordion-item-border-color);
+}
+
+/* Removes default heading margin */
+.accordion__heading {
+  margin: 0;
+}
+
+/* ================================
+   Accordion Button
+================================ */
+
+.accordion__button {
+  width: 100%;
+  padding: var(--accordion-button-padding);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--accordion-button-gap);
+
+  border: 0;
+  background: var(--accordion-button-bg);
+  color: var(--accordion-button-color);
+
+  font: inherit;
+  font-weight: var(--accordion-button-font-weight);
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.accordion__button:hover {
+  background: var(--accordion-button-bg-hover);
+}
+
+/* Style the button when its panel is open */
+.accordion__button[aria-expanded="true"] {
+  background: var(--accordion-button-bg-open);
+}
+
+/* Accessible keyboard focus */
+.accordion__button:focus-visible {
+  outline: var(--accordion-focus-outline-width) solid var(--accordion-focus-outline-color);
+  outline-offset: calc(var(--accordion-focus-outline-offset) * -1);
+}
+
+/* ================================
+   Plus / Minus Icon
+================================ */
+
+.accordion__icon {
+  width: var(--accordion-icon-size);
+  height: var(--accordion-icon-size);
+
+  position: relative;
+  flex: 0 0 auto;
+}
+
+/* Creates the horizontal and vertical lines */
+.accordion__icon::before,
+.accordion__icon::after {
+  content: "";
+  width: 100%;
+  height: var(--accordion-icon-line-size);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  border-radius: var(--accordion-icon-radius);
+  background: currentColor;
+
+  transition:
+    transform var(--accordion-transition),
+    opacity var(--accordion-transition);
+}
+
+/* Horizontal line */
+.accordion__icon::before {
+  transform: translate(-50%, -50%);
+}
+
+/* Vertical line */
+.accordion__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* When open, hide the vertical line so the plus becomes a minus */
+.accordion__button[aria-expanded="true"] .accordion__icon::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* ================================
+   Accordion Panel
+================================ */
+
+.accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+
+  overflow: hidden;
+  visibility: hidden;
+
+  background: var(--accordion-content-bg);
+  color: var(--accordion-content-color);
+
+  transition:
+    grid-template-rows var(--accordion-transition),
+    visibility 0s linear var(--accordion-transition-duration);
+}
+
+.accordion__panel[data-open="true"] {
+  grid-template-rows: 1fr;
+  visibility: visible;
+
+  transition:
+    grid-template-rows var(--accordion-transition),
+    visibility 0s;
+}
+
+/* This wrapper is what actually collapses */
+.accordion__panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Padding goes inside the collapsible wrapper */
+.accordion__content {
+  padding: var(--accordion-content-padding);
+}

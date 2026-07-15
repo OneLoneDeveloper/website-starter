@@ -104,32 +104,22 @@ npm run test:watch
 | GET    | `/health`           | Confirms that the server is running |
 | GET    | Any unmatched route | Displays the 404 page               |
 
-## Reusable modal component
+## Adding UI components to pages
 
-The modal partial in [src/views/components/modal.ejs](src/views/components/modal.ejs) provides a simple, reusable dialog for EJS pages.
+The HTML snippets in [UI-Components/modal.html](UI-Components/modal.html) and [UI-Components/accordion.html](UI-Components/accordion.html) can be copied directly into any webpage.
 
-### How it works
+### Modal
 
-- Pass three values when you include the component:
-  - `id`: the unique modal identifier
-  - `modalTitle`: the title shown in the header
-  - `modalText`: the body copy shown inside the dialog
-- Add a trigger button with `data-modal-open="your-modal-id"` so the browser script can find and open the matching dialog.
-- Close actions inside the modal use `data-modal-close`, which allows the shared script to close the dialog from either the header button or the Cancel button.
+- Add a trigger button with `data-modal-open="your-modal-id"`.
+- Give the dialog the same id value.
+- Use `data-modal-close` on any button inside the dialog that should close it.
+- Make sure the page loads the shared script in [public/js/main.js](public/js/main.js) or the modal script from [public/js/components/modal.js](public/js/components/modal.js).
 
-### Example
+### Accordion
 
-```ejs
-<%- include('components/modal', {
-  id: 'example-modal',
-  modalTitle: 'Example Modal',
-  modalText: 'This is the content shown inside the dialog.'
-}) %>
-
-<button type="button" data-modal-open="example-modal">Open Modal</button>
-```
-
-The interaction logic lives in [public/js/components/modal.js](public/js/components/modal.js), so make sure that script is loaded on the page where the modal is used.
+- Place all accordion items inside a container with `data-accordion`.
+- Give each toggle button `data-accordion-trigger` and matching `id` and `aria-controls` values.
+- Make sure the page loads the shared script in [public/js/main.js](public/js/main.js) or the accordion script from [public/js/components/accordion.js](public/js/components/accordion.js).
 
 ## Project structure
 
