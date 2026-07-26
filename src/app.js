@@ -2,7 +2,8 @@ import express from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import homeRoutes from "./features/pages/pagesRoutes.js";
+import pagesRoutes from "./features/pages/pagesRoutes.js";
+import contactRoutes from "./features/contact/contactRoutes.js";
 import { notFound } from "./middleware/notFound.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 
@@ -34,7 +35,8 @@ app.get("/health", (req, res) => {
 });
 
 // Register the website routes.
-app.use("/", homeRoutes);
+app.use("/", pagesRoutes);
+app.use("/contact", contactRoutes);
 
 // This must be placed after all valid routes.
 app.use(notFound);
