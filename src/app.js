@@ -1,6 +1,7 @@
 import express from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import expressLayouts from "express-ejs-layouts";
 
 import pagesRoutes from "./features/pages/pagesRoutes.js";
 import contactRoutes from "./features/contact/contactRoutes.js";
@@ -18,6 +19,12 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+// Enable layouts.
+app.use(expressLayouts);
+
+// Tell Express which layout to use by default.
+app.set("layout", "layouts/main");
+
 // Serve files from the public folder.
 app.use(express.static(path.join(__dirname, "../public")));
 
@@ -30,7 +37,7 @@ app.use(express.json());
 // A simple route used to check whether the server is running.
 app.get("/health", (req, res) => {
   res.status(200).json({
-    status: "ok"
+    status: "ok",
   });
 });
 
