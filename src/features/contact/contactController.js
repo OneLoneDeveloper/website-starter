@@ -13,7 +13,7 @@ export async function submitContactForm(req, res, next) {
   try {
     const validationErrors = validateContactForm(req.body);
 
-    if (validationErrors.length > 0) {
+    if (Object.keys(validationErrors).length > 0) {
       return res.status(400).render("pages/contact", {
         title: "Contact Us",
         errors: validationErrors,
