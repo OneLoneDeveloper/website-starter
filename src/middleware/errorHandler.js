@@ -25,14 +25,14 @@ export function errorHandler(error, req, res, next) {
       : error.message;
 
   if (statusCode === 404) {
-    return res.status(404).render("errors/404", {
+    return res.status(404).render("pages/errors/404", {
       title: "Page Not Found",
       statusCode,
       message
     });
   }
 
-  return res.status(statusCode).render("errors/500", {
+  return res.status(statusCode).render("pages/errors/500", {
     title: "Server Error",
     statusCode,
     message

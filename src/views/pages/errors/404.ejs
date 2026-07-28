@@ -1,21 +1,15 @@
-<%- include("../partials/header", { title }) %>
+<section class="error-page">
+  <div class="container">
+    <p class="error-code"><%= statusCode %></p>
 
-<main class="main-content">
-  <section class="error-page">
-    <div class="container">
-      <p class="error-code"><%= statusCode %></p>
+    <h1>Page not found</h1>
 
-      <h1>Page not found</h1>
+    <p>
+      <%= message %>
+    </p>
 
-      <p>
-        <%= message %>
-      </p>
-
-      <a class="button" href="/">
-        Return home
-      </a>
-    </div>
-  </section>
-</main>
-
-<%- include("../partials/footer") %>
+    <a class="button" href="/">
+      Return home
+    </a>
+  </div>
+</section>
