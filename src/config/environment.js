@@ -82,6 +82,10 @@ const environment = Object.freeze({
     process.env.VERIFY_EMAIL_ON_STARTUP,
     false,
   ),
+
+  database: {
+    uri: process.env.MONGODB_URI,
+  },
 });
 
 export default environment;

@@ -1,6 +1,7 @@
 import app from "./app.js";
 import environment from "./config/environment.js";
 import { verifyEmailConnection } from "./config/emailClient.js";
+import { connectDatabase } from "./database/databaseClient.js";
 
 async function startServer() {
   try {
@@ -11,6 +12,8 @@ async function startServer() {
 
       console.log("Email server verified.");
     }
+
+    await connectDatabase();
 
     const server = app.listen(environment.port, () => {
       console.log(
