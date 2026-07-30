@@ -14,12 +14,12 @@
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "dev": "node --watch --env-file=.env src/server.js",
-    "start": "node server.js",
-    "test": "node --test",
-    "test:watch": "node --test --watch"
+    "start": "node src/server.js",
+    "test": "node --env-file=.env --test",
+    "test:watch": "node --env-file=.env --test --watch"
   },
   "dependencies": {
     "ejs": "^6.0.1",

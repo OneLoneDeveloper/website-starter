@@ -1,7 +1,7 @@
 import app from "./app.js";
 import environment from "./config/environment.js";
 import { verifyEmailConnection } from "./config/emailClient.js";
-import { connectDatabase } from "./database/databaseClient.js";
+import { connectDatabase } from "./services/databaseClient.js";
 
 async function startServer() {
   try {
