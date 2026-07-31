@@ -7,6 +7,12 @@ import pagesRoutes from "./features/pages/pagesRoutes.js";
 import contactRoutes from "./features/contact/contactRoutes.js";
 import { notFound } from "./middleware/notFound.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import environment from "./config/environment.js";
+import dns from "node:dns/promises";
+
+if (environment.NODE_ENV !== "production") {
+  dns.setServers(["1.1.1.1", "1.0.0.1"]);
+}
 
 // ES modules do not automatically provide __filename and __dirname.
 // These two lines recreate them.
