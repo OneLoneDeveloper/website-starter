@@ -2,6 +2,7 @@ import express from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import expressLayouts from "express-ejs-layouts";
+import helmet from "helmet";
 
 import pagesRoutes from "./features/pages/pagesRoutes.js";
 import contactRoutes from "./features/contact/contactRoutes.js";
@@ -21,6 +22,9 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+// Add protective HTTP headers.
+app.use(helmet());
+
 // Configure EJS.
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -34,11 +38,11 @@ app.set("layout", "layouts/main");
 // Serve files from the public folder.
 app.use(express.static(path.join(__dirname, "../public")));
 
-// Parse regular HTML form submissions.
-app.use(express.urlencoded({ extended: true }));
+// Parse regular HTML form submissions with a small size limit.
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
-// Parse JSON request bodies.
-app.use(express.json());
+// Parse JSON request bodies with a small size limit.
+app.use(express.json({ limit: "10kb" }));
 
 // A simple route used to check whether the server is running.
 app.get("/health", (req, res) => {

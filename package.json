@@ -25,6 +25,8 @@
     "ejs": "^6.0.1",
     "express": "^5.2.1",
     "express-ejs-layouts": "^2.5.1",
+    "express-rate-limit": "^8.6.1",
+    "helmet": "^8.3.0",
     "mongoose": "^9.8.1",
     "nodemailer": "^9.0.3"
   },
