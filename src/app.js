@@ -25,7 +25,7 @@ import { errorHandler } from "./middleware/errorHandler.js";
 import environment from "./config/environment.js";
 
 // In development environments, we set custom DNS servers to avoid issues with MongoDB connections.
-if (environment.NODE_ENV !== "production") {
+if (environment.isDevelopment) {
   dns.setServers(["1.1.1.1", "1.0.0.1"]);
 }
 

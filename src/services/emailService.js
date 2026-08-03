@@ -16,8 +16,8 @@ export async function sendEmail({ to, subject, text, html, replyTo }) {
 
   const message = {
     from: {
-      name: environment.email.fromName,
-      address: environment.email.fromAddress,
+      name: environment.email.emailFromName,
+      address: environment.email.emailFromAddress,
     },
 
     to,
@@ -38,7 +38,9 @@ export async function sendEmail({ to, subject, text, html, replyTo }) {
   } catch (error) {
     console.error("Failed to send email:", error);
 
-    const serviceError  = new Error("Unable to send email at this time.");
+    const serviceError = new Error("Unable to send email at this time.", {
+      cause: error,
+    });
     serviceError.statusCode = 503; // Service Unavailable
 
     throw serviceError;
