@@ -1,5 +1,4 @@
 import { Router } from "express";
-
 import { showHome } from "./pagesController.js";
 
 const router = Router();
