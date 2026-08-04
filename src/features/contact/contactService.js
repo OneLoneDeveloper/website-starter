@@ -9,7 +9,7 @@ export async function processContactSubmission({ name, email, message }) {
   const normalizedMessage = message.replace(/\s+/g, " ").trim();
 
   await sendEmail({
-    to: environment.email.fromAddress,
+    to: environment.email.emailFromAddress,
 
     subject,
 
@@ -26,3 +26,9 @@ ${normalizedMessage}
     replyTo: email,
   });
 }
+
+const contactService = {
+  processContactSubmission,
+};
+
+export default contactService;

@@ -1,5 +1,4 @@
 import nodemailer from "nodemailer";
-
 import environment from "./environment.js";
 
 const emailClient = nodemailer.createTransport({

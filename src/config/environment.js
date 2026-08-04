@@ -73,8 +73,8 @@ const environment = Object.freeze({
     smtpSecure: parseBoolean(process.env.SMTP_SECURE, false),
     smtpUser: process.env.SMTP_USER,
     smtpPassword: process.env.SMTP_PASSWORD,
-    fromName: process.env.EMAIL_FROM_NAME ?? "Website",
-    fromAddress: process.env.EMAIL_FROM_ADDRESS,
+    emailFromName: process.env.EMAIL_FROM_NAME ?? "Website",
+    emailFromAddress: process.env.EMAIL_FROM_ADDRESS,
   }),
 
   // Whether to verify the email connection on startup or wait for the first email to be sent.
