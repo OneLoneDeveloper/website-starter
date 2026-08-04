@@ -1,5 +1,3 @@
-// This file defines the routes for the contact feature of the application. It includes a GET route for displaying the contact page and a POST route for submitting the contact form. The POST route is protected by a rate limiter to prevent abuse.
-
 import { Router } from "express";
 import rateLimit from "express-rate-limit";
 
