@@ -61,11 +61,9 @@ export function validateContactForm(data = {}) {
   if (!message) {
     errors.message = "Please enter a message.";
   } else if (message.length < CONTACT_LIMITS.messageMin) {
-    errors.message =
-      `Your message must be at least ${CONTACT_LIMITS.messageMin} characters.`;
+    errors.message = `Your message must be at least ${CONTACT_LIMITS.messageMin} characters.`;
   } else if (message.length > CONTACT_LIMITS.messageMax) {
-    errors.message =
-      `Your message cannot exceed ${CONTACT_LIMITS.messageMax} characters.`;
+    errors.message = `Your message cannot exceed ${CONTACT_LIMITS.messageMax} characters.`;
   }
 
   return errors;

@@ -7,7 +7,7 @@ import contactService from "./contactService.js";
 export function getContactPage(req, res) {
   res.render("pages/contact", {
     title: "Contact Us",
-    errors: [],
+    errors: {},
     formData: {},
   });
 }
@@ -28,7 +28,7 @@ export async function submitContactForm(req, res, next) {
     await contactService.processContactSubmission(normalizedData);
 
     res.render("pages/contactSuccess", {
-      title: "Message Sent!"
+      title: "Message Sent!",
     });
   } catch (error) {
     next(error);

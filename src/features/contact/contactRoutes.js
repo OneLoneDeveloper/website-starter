@@ -1,10 +1,7 @@
 import { Router } from "express";
 import rateLimit from "express-rate-limit";
 
-import {
-  getContactPage,
-  submitContactForm,
-} from "./contactController.js";
+import { getContactPage, submitContactForm } from "./contactController.js";
 
 const router = Router();
 
