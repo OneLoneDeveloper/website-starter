@@ -5,8 +5,7 @@
 // -------------------------------------------------------------------
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-// The dns/promises module provides an API for performing DNS lookups using promises. It is used here only in development environments dues to issues with MongoDB not connecting otherwise.
-import dns from "node:dns/promises";
+
 
 // -------------------------------------------------------------------
 // npm modules
@@ -20,14 +19,10 @@ import helmet from "helmet";
 // -------------------------------------------------------------------
 import pagesRoutes from "./features/pages/pagesRoutes.js";
 import contactRoutes from "./features/contact/contactRoutes.js";
+import productsRoutes from "./features/products/productsRoutes.js";
 import { notFound } from "./middleware/notFound.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import environment from "./config/environment.js";
-
-// In development environments, we set custom DNS servers to avoid issues with MongoDB connections.
-if (environment.isDevelopment) {
-  dns.setServers(["1.1.1.1", "1.0.0.1"]);
-}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -55,6 +50,7 @@ app.get("/health", (req, res) => {
 
 app.use("/", pagesRoutes);
 app.use("/contact", contactRoutes);
+app.use("/products", productsRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

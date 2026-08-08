@@ -164,6 +164,17 @@ main li + li {
    Hero and content cards
 ========================================= */
 
+.product-status {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.product-status--out-of-stock {
+  color: #b45309;
+}
+
 .hero {
   padding: clamp(2.5rem, 5vw, 4rem);
   border: 1px solid rgba(15, 23, 42, 0.07);

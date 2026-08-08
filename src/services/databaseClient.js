@@ -1,5 +1,12 @@
 import mongoose from "mongoose";
 import environment from "../config/environment.js";
+// The dns/promises module provides an API for performing DNS lookups using promises. It is used here only in development environments dues to issues with MongoDB not connecting otherwise.
+import dns from "node:dns/promises";
+
+// In development environments, we set custom DNS servers to avoid issues with MongoDB connections.
+if (environment.isDevelopment) {
+  dns.setServers(["1.1.1.1", "1.0.0.1"]);
+}
 
 /**
  * Connects to MongoDB.
@@ -42,4 +49,4 @@ export function getMongooseConnectionState() {
  * Returns the underlying Mongoose instance.
  * Useful for advanced features and testing.
  */
-export { mongoose };
+// export { mongoose };

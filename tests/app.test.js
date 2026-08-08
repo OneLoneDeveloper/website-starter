@@ -40,6 +40,15 @@ test("GET / renders the home page", async () => {
   );
 });
 
+test("GET /products renders the products page", async () => {
+  const response = await request(app)
+    .get("/products")
+    .expect("Content-Type", /html/)
+    .expect(200);
+
+  assert.match(response.text, /Products/i);
+});
+
 // Test that a request to a missing page returns the 404 page with the appropriate message.
 test("GET /missing-page returns the 404 page", async () => {
   const response = await request(app)

@@ -1,0 +1,46 @@
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Database-backed content</p>
+
+    <h1>Products</h1>
+
+    <p class="hero-description">
+      Browse the current catalog from your MongoDB collection.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <% if (products.length === 0) { %>
+      <article class="card">
+        <h2>No products yet</h2>
+        <p>
+          There are no products in the database yet. Run the seed script to add sample data.
+        </p>
+      </article>
+    <% } else { %>
+      <div class="card-grid">
+        <% products.forEach((product) => { %>
+          <article class="card">
+            <h2><%= product.name %></h2>
+            <p><%= product.description %></p>
+            <p>
+              <strong><%= new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: product.currency || "USD"
+              }).format(product.price) %></strong>
+            </p>
+            <p>
+              <% if (product.inStock) { %>
+                In stock
+              <% } else { %>
+                Out of stock
+              <% } %>
+            </p>
+          </article>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>
