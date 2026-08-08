@@ -22,9 +22,3 @@ ${message}
     replyTo: email,
   });
 }
-
-const contactService = {
-  processContactSubmission,
-};
-
-export default contactService;

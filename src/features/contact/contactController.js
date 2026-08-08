@@ -2,7 +2,7 @@ import {
   normalizeContactFormData,
   validateContactForm,
 } from "./contactValidation.js";
-import contactService from "./contactService.js";
+import { processContactSubmission } from "./contactService.js";
 
 export function getContactPage(req, res) {
   res.render("pages/contact", {
@@ -25,7 +25,7 @@ export async function submitContactForm(req, res, next) {
       });
     }
 
-    await contactService.processContactSubmission(normalizedData);
+    await processContactSubmission(normalizedData);
 
     res.render("pages/contactSuccess", {
       title: "Message Sent!",
