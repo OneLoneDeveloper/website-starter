@@ -6,7 +6,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-
 // -------------------------------------------------------------------
 // npm modules
 // -------------------------------------------------------------------
@@ -20,6 +19,7 @@ import helmet from "helmet";
 import pagesRoutes from "./features/pages/pagesRoutes.js";
 import contactRoutes from "./features/contact/contactRoutes.js";
 import productsRoutes from "./features/products/productsRoutes.js";
+import paymentsRoutes from "./features/payments/paymentsRoutes.js";
 import { notFound } from "./middleware/notFound.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import environment from "./config/environment.js";
@@ -29,7 +29,27 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        scriptSrc: [
+          "'self'",
+          "https://checkout.sandbox.dev.clover.com",
+          "https://www.google.com",
+          "https://www.gstatic.com",
+        ],
+        frameSrc: [
+          "'self'",
+          "https://checkout.sandbox.dev.clover.com",
+          "https://www.google.com",
+        ],
+        imgSrc: ["'self'", "data:", "https://checkout.sandbox.dev.clover.com"],
+        connectSrc: ["'self'", "https://www.google.com"],
+      },
+    },
+  }),
+);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -51,6 +71,7 @@ app.get("/health", (req, res) => {
 app.use("/", pagesRoutes);
 app.use("/contact", contactRoutes);
 app.use("/products", productsRoutes);
+app.use("/payments", paymentsRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

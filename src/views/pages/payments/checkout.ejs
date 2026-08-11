@@ -1,0 +1,54 @@
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Clover checkout</p>
+    <h1>Pay now</h1>
+    <p class="hero-description">
+      Secure card checkout for this storefront. This implementation is ready for
+      Clover integration without shipping logic.
+    </p>
+  </div>
+</section>
+
+<section>
+  <form action="/charge" method="post" id="payment-form">
+    <div class="form-field">
+      <label for="amount">Amount</label>
+      <input
+        id="amount"
+        name="amount"
+        type="number"
+        min="0.01"
+        step="0.01"
+        required
+      />
+    </div>
+
+    <div class="form-field">
+      <label>Card number</label>
+      <div id="card-number"></div>
+      <div id="card-number-errors" role="alert"></div>
+    </div>
+
+    <div class="form-field">
+      <label>Expiration date</label>
+      <div id="card-date"></div>
+      <div id="card-date-errors" role="alert"></div>
+    </div>
+
+    <div class="form-field">
+      <label>CVV</label>
+      <div id="card-cvv"></div>
+      <div id="card-cvv-errors" role="alert"></div>
+    </div>
+
+    <div class="form-field">
+      <label>Postal code</label>
+      <div id="card-postal-code"></div>
+      <div id="card-postal-code-errors" role="alert"></div>
+    </div>
+
+    <div id="card-response" role="alert"></div>
+
+    <button type="submit">Pay</button>
+  </form>
+</section>

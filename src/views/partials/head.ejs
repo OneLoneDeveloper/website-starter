@@ -12,5 +12,11 @@
 
   <link rel="stylesheet" href="/css/main.css" />
 
+  
+  <% if (typeof includeCloverSdk !== "undefined" && includeCloverSdk) { %>
+    <script src=""></script>
+    <script type="module" src="/js/clover.js"></script>
+  <% } %>
+
   <script type="module" src="/js/main.js" defer></script>
 </head>

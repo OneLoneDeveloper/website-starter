@@ -77,6 +77,13 @@ const environment = Object.freeze({
     emailFromAddress: process.env.EMAIL_FROM_ADDRESS,
   }),
 
+  // Clover payment settings. These can be left unset until the payment feature is configured.
+  clover: Object.freeze({
+    apiBaseUrl: process.env.CLOVER_API_BASE_URL ?? "",
+    apiToken: process.env.CLOVER_PRIVATE_KEY ?? "",
+    merchantId: process.env.CLOVER_MERCHANT_ID ?? "",
+  }),
+
   // Whether to verify the email connection on startup or wait for the first email to be sent.
   verifyEmailOnStartup: parseBoolean(
     process.env.VERIFY_EMAIL_ON_STARTUP,
