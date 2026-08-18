@@ -82,6 +82,7 @@ const environment = Object.freeze({
     apiBaseUrl: process.env.CLOVER_API_BASE_URL ?? "",
     apiToken: process.env.CLOVER_PRIVATE_KEY ?? "",
     merchantId: process.env.CLOVER_MERCHANT_ID ?? "",
+    chargesUrl: process.env.CLOVER_CHARGES_URL ?? "",
   }),
 
   // Whether to verify the email connection on startup or wait for the first email to be sent.
