@@ -14,7 +14,7 @@
 
   
   <% if (typeof includeCloverSdk !== "undefined" && includeCloverSdk) { %>
-    <script src="https://checkout.sandbox.dev.clover.com/sdk.js"></script>
+    <script src="<%= cloverSdkUrl %>"></script>
     <script type="module" src="/js/clover.js"></script>
   <% } %>
 

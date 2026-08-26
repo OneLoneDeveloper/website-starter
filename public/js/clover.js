@@ -1,6 +1,12 @@
-const clover = new Clover("", {
-  merchantId: "",
+const config = document.getElementById("clover-config");
+
+const publicKey = config.dataset.publicKey;
+const merchantId = config.dataset.merchantId;
+
+const clover = new Clover(publicKey, {
+  merchantId,
 });
+
 const elements = clover.elements();
 
 const form = document.getElementById("payment-form");
