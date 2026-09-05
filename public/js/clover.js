@@ -11,7 +11,21 @@ const elements = clover.elements();
 
 const form = document.getElementById("payment-form");
 
-const cardNumber = elements.create("CARD_NUMBER");
+const styles = {
+  body: {
+    fontFamily: 'Roboto, Open Sans, sans-serif',
+    fontSize: '16px',
+  },
+  input: {
+    height: '50px',
+    fontSize: '16px',
+    padding: '10px',
+    border: '1px solid #ccc',
+    borderRadius: '10px',
+  }
+};
+
+const cardNumber = elements.create("CARD_NUMBER", styles);
 const cardDate = elements.create("CARD_DATE");
 const cardCvv = elements.create("CARD_CVV");
 const cardPostalCode = elements.create("CARD_POSTAL_CODE");
