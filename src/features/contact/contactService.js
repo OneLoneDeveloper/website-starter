@@ -1,10 +1,13 @@
 import environment from "../../config/environment.js";
 import { sendEmail } from "../../services/emailService.js";
 
-export async function processContactSubmission({ name, email, message }) {
+export async function processContactSubmission(
+  { name, email, message },
+  sendEmailFunction = sendEmail,
+) {
   const subject = `New contact message from ${name}`;
 
-  await sendEmail({
+  await sendEmailFunction({
     to: environment.email.emailFromAddress,
 
     subject,
