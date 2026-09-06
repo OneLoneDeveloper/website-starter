@@ -29,30 +29,32 @@
       />
     </div>
 
-    <div style="display: flex; gap: 10px; width: 100%">
-      <div class="form-field" style="flex: 1">
+    <div class="clover-row">
+      <div class="clover-form-field">
         <label for="card-number">Card number</label>
         <div id="card-number" class="clover-field"></div>
-        <div id="card-number-errors" role="alert"></div>
+        <div class="clover-form-error" id="card-number-errors" role="alert"></div>
       </div>
 
-      <div class="form-field" style="flex: 1">
+      <div class="clover-form-field">
         <label>Expiration date</label>
         <div id="card-date" class="clover-field"></div>
-        <div id="card-date-errors" role="alert"></div>
+        <div class="clover-form-error" id="card-date-errors" role="alert"></div>
       </div>
     </div>
 
-    <div class="form-field">
-      <label>CVV</label>
-      <div id="card-cvv" class="clover-field"></div>
-      <div id="card-cvv-errors" role="alert"></div>
-    </div>
+    <div class="clover-row">
+      <div class="clover-form-field">
+        <label>CVV</label>
+        <div id="card-cvv" class="clover-field"></div>
+        <div class="clover-form-error" id="card-cvv-errors" role="alert"></div>
+      </div>
 
-    <div class="form-field">
-      <label>Postal code</label>
-      <div id="card-postal-code" class="clover-field"></div>
-      <div id="card-postal-code-errors" role="alert"></div>
+      <div class="clover-form-field">
+        <label>Postal code</label>
+        <div id="card-postal-code" class="clover-field"></div>
+        <div class="clover-form-error" id="card-postal-code-errors" role="alert"></div>
+      </div>
     </div>
 
     <div id="card-response" role="alert"></div>

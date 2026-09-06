@@ -1,0 +1,21 @@
+.clover-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.clover-form-field {
+    flex: 1;
+    margin-top: 1rem;
+}
+
+.clover-form-error {
+    color: #d32f2f;
+    margin-top: -0.5rem;
+}
+
+.clover-field {
+  height: 60px;
+  width: calc(100% + 20px);
+  margin-left: -10px;
+}
