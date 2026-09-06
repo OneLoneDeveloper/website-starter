@@ -34,5 +34,6 @@ const productSchema = new mongoose.Schema(
   },
 );
 
+// If the Product model already exists, use it; otherwise, create a new model
 export const Product =
   mongoose.models.Product ?? mongoose.model("Product", productSchema);
