@@ -1,5 +1,6 @@
 .clover-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   width: 100%;
 }
@@ -7,11 +8,16 @@
 .clover-form-field {
     flex: 1;
     margin-top: 1rem;
+    min-width: 200px;
 }
 
 .clover-form-error {
     color: #d32f2f;
     margin-top: -0.5rem;
+}
+
+.clover-pay {
+  margin-top: 1rem;
 }
 
 .clover-field {

@@ -66,7 +66,6 @@ cardNumber.addEventListener("blur", function (event) {
 
 cardDate.addEventListener("change", function (event) {
   displayCardDateError.textContent = event.CARD_DATE.error;
-  console.log(event.CARD_DATE.error);
 });
 
 cardDate.addEventListener("blur", function (event) {
@@ -92,16 +91,35 @@ cardPostalCode.addEventListener("blur", function (event) {
 // Listen for form submission
 form.addEventListener("submit", function (event) {
   event.preventDefault();
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.textContent = "Processing payment...";
+  
   // Use the iframe's tokenization method with the user-entered card details
   clover.createToken().then(function (result) {
     if (result.errors) {
-      Object.values(result.errors).forEach(function (value) {
-        // displayError.textContent = value;
-        console.log(result.errors);
+      const errorDisplays = {
+        CARD_NUMBER: displayCardNumberError,
+        CARD_DATE: displayCardDateError,
+        CARD_CVV: displayCardCvvError,
+        CARD_POSTAL_CODE: displayCardPostalCodeError,
+      };
+
+      Object.entries(result.errors).forEach(function ([field, value]) {
+        const displayError = errorDisplays[field];
+        if (displayError) {
+          displayError.textContent = value;
+        }
       });
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
     } else {
       cloverTokenHandler(result.token);
     }
+  }).catch(function () {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
   });
 });
 
