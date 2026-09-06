@@ -15,6 +15,7 @@ const styles = {
   body: {
     margin: '0',
     padding: '10px',
+    paddingTop: '0',
     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
     fontSize: '18px',
     color: '#1f2937',
@@ -56,35 +57,36 @@ const displayCardPostalCodeError = document.getElementById(
 
 // Handle real-time validation errors from the card element
 cardNumber.addEventListener("change", function (event) {
-  console.log(`cardNumber changed ${JSON.stringify(event)}`);
+  displayCardNumberError.textContent = event.CARD_NUMBER.error;
 });
 
 cardNumber.addEventListener("blur", function (event) {
-  console.log(`cardNumber blur ${JSON.stringify(event)}`);
+  displayCardNumberError.textContent = event.CARD_NUMBER.error;
 });
 
 cardDate.addEventListener("change", function (event) {
-  console.log(`cardDate changed ${JSON.stringify(event)}`);
+  displayCardDateError.textContent = event.CARD_DATE.error;
+  console.log(event.CARD_DATE.error);
 });
 
 cardDate.addEventListener("blur", function (event) {
-  console.log(`cardDate blur ${JSON.stringify(event)}`);
+  displayCardDateError.textContent = event.CARD_DATE.error;
 });
 
 cardCvv.addEventListener("change", function (event) {
-  console.log(`cardCvv changed ${JSON.stringify(event)}`);
+  displayCardCvvError.textContent = event.CARD_CVV.error;
 });
 
 cardCvv.addEventListener("blur", function (event) {
-  console.log(`cardCvv blur ${JSON.stringify(event)}`);
+  displayCardCvvError.textContent = event.CARD_CVV.error;
 });
 
 cardPostalCode.addEventListener("change", function (event) {
-  console.log(`cardPostalCode changed ${JSON.stringify(event)}`);
+  displayCardPostalCodeError.textContent = event.CARD_POSTAL_CODE.error;
 });
 
 cardPostalCode.addEventListener("blur", function (event) {
-  console.log(`cardPostalCode blur ${JSON.stringify(event)}`);
+  displayCardPostalCodeError.textContent = event.CARD_POSTAL_CODE.error;
 });
 
 // Listen for form submission
