@@ -1,7 +1,10 @@
 import emailClient from "../config/emailClient.js";
 import environment from "../config/environment.js";
 
-export async function sendEmail({ to, subject, text, html, replyTo }) {
+export async function sendEmail(
+  { to, subject, text, html, replyTo },
+  emailClientOverride = emailClient,
+) {
   if (!to) {
     throw new Error("An email recipient is required.");
   }
@@ -28,7 +31,7 @@ export async function sendEmail({ to, subject, text, html, replyTo }) {
   };
 
   try {
-    const result = await emailClient.sendMail(message);
+    const result = await emailClientOverride.sendMail(message);
 
     return {
       messageId: result.messageId,
