@@ -13,22 +13,33 @@ const form = document.getElementById("payment-form");
 
 const styles = {
   body: {
-    fontFamily: 'Roboto, Open Sans, sans-serif',
-    fontSize: '16px',
+    margin: '0',
+    padding: '10px',
+    fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    fontSize: '18px',
+    color: '#1f2937',
   },
   input: {
     height: '50px',
-    fontSize: '16px',
-    padding: '10px',
-    border: '1px solid #ccc',
+    padding: '10px 14px',
+    border: '1px solid #d1d5db',
     borderRadius: '10px',
-  }
+    backgroundColor: '#ffffff',
+    color: '#1f2937',
+    fontSize: '18px',
+    transition: 'border-color 160ms ease, box-shadow 160ms ease',
+  },
+  'input:focus': {
+    outlineOffset: '3px',
+    borderColor: '#60a5fa',
+    boxShadow: '0 0 0 3px rgb(147 197 253 / 0.25)',
+  },
 };
 
 const cardNumber = elements.create("CARD_NUMBER", styles);
-const cardDate = elements.create("CARD_DATE");
-const cardCvv = elements.create("CARD_CVV");
-const cardPostalCode = elements.create("CARD_POSTAL_CODE");
+const cardDate = elements.create("CARD_DATE", styles);
+const cardCvv = elements.create("CARD_CVV", styles);
+const cardPostalCode = elements.create("CARD_POSTAL_CODE", styles);
 
 cardNumber.mount("#card-number");
 cardDate.mount("#card-date");
