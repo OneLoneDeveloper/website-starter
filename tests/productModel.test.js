@@ -17,6 +17,7 @@ describe("Product model", () => {
   // Test that the Product model applies default values for inStock and currency
   test("applies product defaults and trims values", () => {
     const product = new Product({
+      slug: "coffee-mug",
       name: "  Coffee Mug  ",
       price: 12.5,
       currency: "usd",
@@ -30,6 +31,7 @@ describe("Product model", () => {
   // Test that the Product model rejects a negative price
   test("rejects a negative price", async () => {
     const product = new Product({
+      slug: "coffee-mug",
       name: "Coffee Mug",
       price: -1,
     });

@@ -8,6 +8,7 @@ import {
 
 const sampleProducts = [
   {
+    slug: "aurora-lamp",
     name: "Aurora Lamp",
     description: "A sculptural desk lamp with a warm glow.",
     price: 59.99,
@@ -15,6 +16,7 @@ const sampleProducts = [
     inStock: true,
   },
   {
+    slug: "northwind-backpack",
     name: "Northwind Backpack",
     description: "A lightweight pack for daily commutes and weekend trips.",
     price: 84.5,
@@ -22,6 +24,7 @@ const sampleProducts = [
     inStock: true,
   },
   {
+    slug: "echo-water-bottle",
     name: "Echo Water Bottle",
     description: "Insulated steel bottle with a soft grip finish.",
     price: 32,
@@ -40,7 +43,7 @@ export async function seedProducts() {
         { $set: product },
         {
           upsert: true,
-          new: true,
+          returnDocument: "after",
           setDefaultsOnInsert: true,
         },
       );

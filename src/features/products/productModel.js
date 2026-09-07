@@ -2,6 +2,13 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
     name: {
       type: String,
       required: true,

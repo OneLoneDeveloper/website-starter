@@ -1,14 +1,33 @@
 import { createCharge } from "../../services/paymentService.js";
 import environment from "../../config/environment.js";
+import { getProductBySlug } from "../products/productsService.js";
 
-export async function showCheckoutForm(req, res, next) {
-  res.status(200).render("pages/payments/checkout", {
-    title: "Checkout",
-    includeCloverSdk: true,
-    cloverSdkUrl: environment.clover.cloverSdkUrl,
-    publicKey: environment.clover.publicKey,
-    merchantId: environment.clover.merchantId,
-  });
+export async function showCheckoutForm(
+  req,
+  res,
+  next,
+  getProductBySlugFunction = getProductBySlug,
+) {
+  try {
+    const product = await getProductBySlugFunction(req.params.productSlug);
+
+    if (!product || !product.inStock) {
+      const error = new Error("Product is not available.");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    res.status(200).render("pages/payments/checkout", {
+      title: "Checkout",
+      includeCloverSdk: true,
+      cloverSdkUrl: environment.clover.cloverSdkUrl,
+      publicKey: environment.clover.publicKey,
+      merchantId: environment.clover.merchantId,
+      product,
+    });
+  } catch (error) {
+    next(error);
+  }
 }
 
 export async function chargePayment(
@@ -16,12 +35,20 @@ export async function chargePayment(
   res,
   next,
   createChargeFunction = createCharge,
+  getProductBySlugFunction = getProductBySlug,
 ) {
   try {
-    const { amount, cloverToken } = req.body;
+    const { cloverToken } = req.body;
+    const product = await getProductBySlugFunction(req.params.productSlug);
+
+    if (!product || !product.inStock) {
+      const error = new Error("Product is not available.");
+      error.statusCode = 404;
+      throw error;
+    }
 
     const result = await createChargeFunction({
-      amount,
+      amount: product.price,
       token: cloverToken,
       clientIp: req.ip,
     });

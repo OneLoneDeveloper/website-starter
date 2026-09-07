@@ -38,6 +38,9 @@
                 Out of stock
               <% } %>
             </p>
+            <% if (product.inStock) { %>
+              <a class="button" href="/payments/<%= product.slug %>">Buy now</a>
+            <% } %>
           </article>
         <% }) %>
       </div>
