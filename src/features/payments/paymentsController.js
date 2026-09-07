@@ -11,11 +11,16 @@ export async function showCheckoutForm(req, res, next) {
   });
 }
 
-export async function chargePayment(req, res) {
+export async function chargePayment(
+  req,
+  res,
+  next,
+  createChargeFunction = createCharge,
+) {
   try {
     const { amount, cloverToken } = req.body;
 
-    const result = await createCharge({
+    const result = await createChargeFunction({
       amount,
       token: cloverToken,
       clientIp: req.ip,
